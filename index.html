@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkWell: The Whispering Manor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238C2D2D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z'/><line x1='16' y1='8' x2='2' y2='22'/></svg>">
+</head>
+<body>
+    <div id="desk" class="reading-desk">
+        <header class="desk-header">
+            <div class="brand">
+                <svg class="icon icon-quill" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                    <line x1="16" y1="8" x2="2" y2="22"/>
+                    <line x1="17.5" y1="15" x2="9" y2="15"/>
+                </svg>
+                <span class="brand-title">InkWell</span>
+            </div>
+            <div class="desk-controls">
+                <button type="button" id="audio-toggle-btn" class="desk-btn" title="Toggle Sound Ambience">
+                    <svg id="audio-icon" class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <line x1="23" y1="9" x2="17" y2="15"/>
+                        <line x1="17" y1="9" x2="23" y2="15"/>
+                    </svg>
+                    <span class="btn-label">Ambience</span>
+                </button>
+                <button type="button" id="theme-toggle-btn" class="desk-btn" title="Toggle Candlelight / Study Theme">
+                    <svg id="theme-icon" class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2c-.5 1-2 2.5-2 4a2 2 0 0 0 4 0c0-1.5-1.5-3-2-4z"/>
+                        <path d="M7 10h10v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10z"/>
+                        <line x1="12" y1="6" x2="12" y2="10"/>
+                    </svg>
+                    <span class="btn-label">Candle</span>
+                </button>
+                <button type="button" id="journal-toggle-btn" class="desk-btn desk-btn-accent" title="Open Case Journal">
+                    <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                    <span class="btn-label">Journal</span>
+                    <span id="journal-badge" class="badge">0</span>
+                </button>
+            </div>
+        </header>
+        <main class="parchment-wrapper">
+            <article class="parchment-sheet">
+                <div class="flourish-divider" aria-hidden="true">
+                    <svg width="120" height="16" viewBox="0 0 120 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M0 8h45m30 0h45"/>
+                        <circle cx="50" cy="8" r="2.5" fill="currentColor"/>
+                        <circle cx="60" cy="8" r="4" fill="currentColor"/>
+                        <circle cx="70" cy="8" r="2.5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <header class="scene-header">
+                    <span id="scene-chapter" class="scene-chapter">Prologue</span>
+                    <h1 id="scene-title" class="scene-title">The Rain Upon Blackwood Manor</h1>
+                </header>
+                <div id="story-content" class="story-content">
+                    <p class="story-paragraph drop-cap">
+                        The carriage wheels grind to a halt against the wet gravel. Rain lashes against the coach windows in furious sheets, blurring the towering silhouette of Blackwood Manor against the jagged lightning above. In your pocket, Lord Percival’s crumpled telegram burns with urgency: <em>"Come at once, Vance. The vault has breathed, and my brother is no longer himself."</em>
+                    </p>
+                </div>
+                <div id="item-banner" class="item-banner hidden" role="status">
+                    <svg class="icon item-banner-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <span id="item-banner-text" class="item-banner-text">Clue Discovered</span>
+                </div>
+                <section class="choices-section" aria-label="Investigation Choices">
+                    <div class="choices-divider">
+                        <span>What is your course of action?</span>
+                    </div>
+                    <div id="choices-container" class="choices-container">
+                        <button type="button" class="choice-card">
+                            <span class="choice-bullet">I</span>
+                            <span class="choice-text">Step out into the downpour and inspect the rusted front gates.</span>
+                        </button>
+                        <button type="button" class="choice-card">
+                            <span class="choice-bullet">II</span>
+                            <span class="choice-text">Take down your oil lantern and search the perimeter hedge.</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+        </main>
+        <aside id="journal-drawer" class="journal-drawer" aria-label="Investigator's Journal" aria-hidden="true">
+            <div class="journal-backdrop" id="journal-backdrop"></div>
+            <div class="journal-content">
+                <div class="journal-header">
+                    <div>
+                        <h2>Investigator’s Journal</h2>
+                        <p class="journal-subtitle">Detective Arthur Vance • Case Notes</p>
+                    </div>
+                    <button type="button" id="journal-close-btn" class="journal-close-btn" aria-label="Close Journal">&times;</button>
+                </div>
+                <div class="journal-body">
+                    <section class="journal-section">
+                        <h3>Logged Clues</h3>
+                        <ul id="clues-list" class="clues-list">
+                            <li class="empty-entry">No clues logged yet. Scour your surroundings.</li>
+                        </ul>
+                    </section>
+                    <section class="journal-section">
+                        <h3>Satchel & Items</h3>
+                        <div id="inventory-list" class="inventory-chips">
+                            <span class="empty-entry">Your satchel is empty.</span>
+                        </div>
+                    </section>
+                    <section class="journal-section journal-actions">
+                        <button type="button" id="rewind-btn" class="action-btn" title="Step back to the previous choice">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                            </svg>
+                            <span>Rewind Page</span>
+                        </button>
+                        <button type="button" id="restart-btn" class="action-btn action-btn-danger" title="Restart the entire case">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/>
+                                <path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/>
+                            </svg>
+                            <span>Begin New Case</span>
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
