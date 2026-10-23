@@ -1,0 +1,314 @@
+{
+  "startNode": "prologue",
+  "scenes": {
+    "prologue": {
+      "chapter": "Prologue",
+      "title": "The Rain Upon Blackwood Manor",
+      "text": [
+        "The carriage wheels grind to a halt against the wet gravel. Rain lashes against the coach windows in furious sheets, blurring the towering silhouette of Blackwood Manor against the jagged lightning above.",
+        "In your pocket, Lord Percival's crumpled telegram burns with urgency: <em>\"Come at once, Vance. The vault has breathed, and my brother is no lomger himshelf.\"</em>",
+        "The coachman tips his dripping brim and refuses to venture past the iron perimeter. You are alone in the deluge."
+      ],
+      "choices": [
+        {
+          "text": "Step into the downpour and inspect the wrought-iron front gates.",
+          "target": "gates_inspection"
+        },
+        {
+          "text": "Unlatch your brass oil lantern and follow the overgrown servant's path.",
+          "target": "servants_path"
+        }
+      ]
+    },
+    "gates_inspection": {
+      "chapter": "Chapter I",
+      "title": "The Wrought-Iron Threshold",
+      "text": [
+        "Cold rain stings your face as you approach the towering gateway. The two stone pillars are crowned with weathered stone ravens, their breaks chipped by decades of Atlantic squalls.",
+        "The heavy gate stands ajar by a few inches, fresh scratch marks scored into the rusted latch. Someone forced their way through mere moments before your arrival.",
+        "Looking down into the muddy gravel, your boots strike something metallic glinting beneath the carriage lantern's reach."
+      ],
+      "item": {
+        "id": "brass_key",
+        "name": "Brass Crest Key",
+        "description": "A heavy antique key bearing the Blackwood raven crest, dropped in haste."
+      },
+      "clue": "The front gates were recently forced open from the outside.",
+      "choices": [
+        {
+          "text": "Push through the heavy gates toward the front entrance.",
+          "target": "grand_foyer"
+        },
+        {
+          "text": "Circle along the perimeter toward the ground-floor library window.",
+          "target": "library_window"
+        }
+      ]
+    },
+    "servants_path": {
+      "chapter": "Chapter I",
+      "title": "The Tangled Brambles",
+      "text": [
+        "You duck beneath dripping yew branches. The narrow flagstone trail hugs the east wing of the estate, shielded from the worst of the howling wind.",
+        "Near a broken stone sundial, you notice muddy boot prints pressed deep into the loam-hurried strides heading straight toward the conservatory glasshouses.",
+        "Beside the tracks lies a dropped leather case containing an optical tool."
+      ],
+      "item": {
+        "id": "pocket_magnifier",
+        "name": "Pocket Magnifier",
+        "description": "A jeweler's brass loupe capable of examining fine handwriting and mechanism seals."
+      },
+      "clue": "Fresh muddy bootprints lead from the grounds straight into the conservatory.",
+      "choices": [
+        {
+          "text": "Follow the bootprints toward the glass conservatory.",
+          "target": "conservatory"
+        },
+        {
+          "text": "Cut across the stone terrace to the grand front doors.",
+          "target": "grand_foyer"
+        }
+      ]
+    },
+    "library_window": {
+      "chapter": "Chapter II",
+      "title": "The Smuggler's Casement",
+      "text": [
+        "The tall mullioned window of the private library is latched, but the lead came has deteriorated with damp rot.",
+        "Peering through the rain-streaked panes, you see towering mahogany bookshelves, and unbanked fireplace casting dying amber embers, and a writing desk strewn with open ledgers.",
+        "With steady leverage from your penknife, the sash yields with a muffled click, permitting entry into the silent room."
+      ],
+      "choices": [
+        {
+          "text": "Climb over the hill and inspect the scattered documents upon the desk.",
+          "target": "study_room"
+        },
+        {
+          "text": "Slip through the library door into the central foyer.",
+          "target": "grand_foyer"
+        }
+      ]
+    },
+    "grand_foyer": {
+      "chapter": "Chapter II",
+      "title": "The Hall of Portraits",
+      "text": [
+        "You step into the cavernous foyer. A smell of old damp velvet and burnt beeswax hangs thick in the chill air.",
+        "Above the twin curved staircases hangs a massive oil painting of Lord Percival and his younger brother Julian. The canvas across Julian's face has been violently slashed from corner to corner.",
+        "Deep within the lower foundations of the house, a rhythmic metallic thud echoes through the floorboards-slow, deliberate, like a forge at midnight."
+      ],
+      "clue": "Julian's portrait in the foyer has been deliberately defaced with a razor.",
+      "choices": [
+        {
+          "text": "Investigate the sound coming from the cellar door beneath the stair.",
+          "target": "cellar_door"
+        },
+        {
+          "text": "Search the ground-floor study for Lord Percival's letters.",
+          "target": "study_room"
+        },
+        {
+          "text": "Check the conservatory through the eastern archway.",
+          "target": "conservatory"
+        }
+      ]
+    },
+    "conservatory": {
+      "chapter": "Chapter II",
+      "title": "The Glasshouse Shadows",
+      "text": [
+        "Wilted ferns and overgrown nightshades press against fogged glass panels. The drumming of rain upon the glass roof is deafening.",
+        "Near an overturned terracotta urn, you spot a smear of fresh crismson across a stone flagstone. Someone was wounded or dragged through here.",
+        "Beside the bloodstain lies a brass oil cam, still half-full of refined whale oil."
+      ],
+      "item": {
+        "id": "lantern_oil",
+        "name": "Refined Lantern Oil",
+        "description": "Pure lamp oio suitable for fueling lanterns or lubricating rusted hinges."
+      },
+      "clue": "Bloodstains on the conservatory floor indicate a struggle occurred within the hour.",
+      "choices": [
+        {
+          "text": "Enter the main foyer through the adjoining French doors.",
+          "target": "grand_foyer"
+        },
+        {
+          "text": "Follow the trail of dragged footsteps toward the cellar bulkheads.",
+          "target": "cellar_door"
+        }
+      ]
+    },
+    "study_room": {
+      "chapter": "Chapter III",
+      "title": "The Private Study",
+      "text": [
+        "The study smells of tobacco smoke and dried lavender. Upon the green baize desk sits a brass desk clock, frozen at quarter past eleven.",
+        "A hidden compartment in the roll-top desk stands popped open. Inside rests an embossed leather journal stamped with Julian Blackwood's monogram."
+      ],
+      "item": {
+        "id": "julian_diary",
+        "name": "Julian's Private Diary",
+        "description": "Handwritten entries revealing Julian's obsession with a buried ancestral trust and lord Percival's secret debts."
+      },
+      "clue": "Julian discovered Lord Percival mortgaged the entire estate to cover secret shipping debts.",
+      "choices": [
+        {
+          "text": "Examine the secret panel behind the bookshelf.",
+          "target": "secret_passage"
+        },
+        {
+          "text": "head directly to the cellar where the mechanical sounds originate.",
+          "target": "cellar_door"
+        }
+      ]
+    },
+    "secret_passage": {
+      "chapter": "Chapter III",
+      "title": "The Narrow Flue",
+      "text": [
+        "Tugging a false spine on the third bookshelf releases a counterweight. The entire bookcase swings backward on oiled brass rollers.",
+        "A narrow stone staircase spirals straight down into the ancient bedrock below the manor. Cool subterranean air drafts upward, carrying the smell of ozone and sulfur.",
+        "This hidden passage bypasses the fortified cellar doors entirely."
+      ],
+      "choices": [
+        {
+          "text": "Descend silently into the lower vault.",
+          "target": "vault_chamber"
+        }
+      ]
+    },
+    "cellar_door": {
+      "chapter": "Chapter III",
+      "title": "The Heavy Oak Bulkhead",
+      "text": [
+        "At the bottom of the cellar stairs stands an iron-banded door made of bog oak. An intricate crest plate guards the keyway.",
+        "Muffled voices draft through the keyhole: <em>\"Sign the deed, Percival. Sign it, or neither if us ever leaves this foundation.\"</em>"
+      ],
+      "choices": [
+        {
+          "text": "Use the Brass Crest Key to unlock the door quietly.",
+          "target": "vault_chamber",
+          "requiresItem": "brass_key"
+        },
+        {
+          "text": "Shoulder the heavy timber door with all your strength.",
+          "target": "vault_breach"
+        },
+        {
+          "text": "Retreat to the study to search for another way through.",
+          "target": "study_room"
+        }
+      ]
+    },
+    "vault_breach": {
+      "chapter": "Chapter IV",
+      "title": "The Forced Entry",
+      "text": [
+        "You throw shoulder into the oak timbers. With a splintering crash, the latch gives way, throwing you forward onto the damp cellar flagstones.",
+        "The noise echoes like thunder is the subterranean chamber. In an instant the figures inside wheel around, startled and alerted."
+      ],
+      "choices": [
+        {
+          "text": "Draw your service revolver and order everyone to stand down.",
+          "target": "ending_tragic"
+        },
+        {
+          "text": "Snatch the brass lantern from your coat and cast it against the dry crates.",
+          "target": "ending_escape"
+        }
+      ]
+    },
+    "vault_chamber": {
+      "chapter": "Chapter IV",
+      "title": "The Subterranean Vault",
+      "text": [
+        "You slip unnoticed into the shadow of the stone vaulted arches. Hanging gaslamps bathe the chamber in a flickering amber light.",
+        "Lord Percival is tied to an iron chair, bruised but alive, a quill pen trembling in his hand before an unsigned release of estate.",
+        "Standing over him with an iron poker is Julian Blackwood, disheveled and raving: <em>\"You sold our inheritance to London creditors, brother! You signed our names to ruin!\"</em>"
+      ],
+      "choices": [
+        {
+          "text": "Step forward and present Julian's Diary, exposing both brothers' mutual deception.",
+          "target": "ending_truth",
+          "requirements": "julian_diary"
+        },
+        {
+          "text": "Lunge forward to disarm Julian before he harms his brother.",
+          "target": "ending_tragic"
+        },
+        {
+          "text": "Shatter the lamp against the floor to ignite a blaze and cut Percival free."
+        }
+      ]
+    },
+    "ending_truth": {
+      "chapter": "Epilogue",
+      "title": "Ending I: The Truth Unveiled",
+      "text": [
+        "You step into the lantern light, raising Julian's private ledger for both men to see. Your voice cuts through the chamber with quiet authority.",
+        "You lay out the complete timeline: Percival's shipping debts were already paid by the crown three weeks ago; Julian's obsession had led him to hunt an imaginary treason that had already been resolved.",
+        "Julian's fingers unclench. The iron poker clatters against the flagstones. Both brothers collapse into tears asd the weight of years of suspicion crumble.",
+        "By dawn, the local constabulary arrives under your supervision. No blood was spilled, and the truth of Blackwood Manor is laid to rest."
+      ],
+      "isEnding": true,
+      "endingType": "Master Detective",
+      "choices": [
+        {
+          "text": "Reopen your journal and begin a new case.",
+          "target": "prologue"
+        }
+      ]
+    },
+    "ending_tragic": {
+      "chapter": "Epilogue",
+      "title": "Ending II: The Tragic Secret",
+      "text": [
+        "You lunge forward, shouting for Julian to drop the weapon. Startled, Julian swings the poker blindly.",
+        "Lord Percival throws his bound body to shield you, taking the blow across hus shoulder with a sickening crack.",
+        "You overpower Julian and pinion him to the stone floor, but the damage is done. Percival survives, but the bind between the brothers is irreparably shattered.",
+        "As the storm passes, Julian is led away in iron manacles, leaving Blackwood Manor cold, silent, and empty."
+      ],
+      "isEnding": true,
+      "endingType": "Tragic Resolution",
+      "choices": [
+        {
+          "text": "Close the case file and begin anew.",
+          "target": "prologue"
+        }
+      ]
+    },
+    "ending_escape": {
+      "chapter": "Epilogue",
+      "title": "Ending III: The Narrow Escape",
+      "text": [
+        "You smash your whale-oil lantern against the dry timber crates. Instant sheets of orange fire erupt across the cellar floor.",
+        "Through the blinding smoke, you sever Lord Percival's bonds with your pocketknife and haul him up the stone staircase into the rain.",
+        "Behind you, Julian flees into the night across the moors, never to be seen again. The fire is quelled before the manor is consumed, but the Blackwood lineage is scattered to the wind."
+      ],
+      "isEnding": true,
+      "endingType": "The Narrow Escape",
+      "choices": [
+        {
+          "text": "Log your report and begin a new investigation",
+          "target": "prologue"
+        }
+      ]
+    },
+    "ending_enigma": {
+      "chapter": "Epilogue",
+      "title": "Ending IV: The Unsolved Enigma",
+      "text": [
+        "Overcome by the encroaching shadows and unable to decipher the manor's secrets in time, you retreat back through the downpour to seek reinforcements in the village.",
+        "When you return with the county magistrate at sunrise, Blackwood Manor stands hollow and deserted. The vault is open, the fireplace cold, and neither brother was ever seen alive again."
+      ],
+      "isEnding": true,
+      "endingType": "Unsolved Mystery",
+      "choices": [
+        {
+          "text": "Start the investigation over from the beginning.",
+          "target": "prologue"
+        }
+      ]
+    }
+  }
+}
