@@ -252,6 +252,50 @@ body {
     transform: translateX(4px);
     box-shadow: var(--shadow-tactile);
 }
+.choice-card.choice-locked {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background-color: var(--bg-parchment-subtle);
+    border: 1px dashed var(--border-parchment);
+    transform: none !important;
+    box-shadow: none !important;
+}
+.choice-card.choice-locked .choice-bullet {
+    color: var(--text-muted);
+    border-color: var(--text-muted);
+}
+.lock-hint {
+    display: block;
+    font-size: 0.8rem;
+    font-family: var(--font-sans-ui);
+    color: var(--accent-crimson);
+    margin-top: 0.25rem;
+    font-style: normal;
+}
+.inventory-card {
+    background: var(--bg-parchment-subtle);
+    border: 1px solid var(--border-parchment);
+    border-radius: 4px;
+    padding: 0.65rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: border-color 0.2s ease;
+}
+.inventory-card:hover {
+    border-color: var(--accent-gold);
+}
+.inventory-card-title {
+    font-family: var(--font-serif-title);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-crimson);
+}
+.inventory-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
 [data-theme="dark"] .choice-card:hover {
     background-color: #2D2721;
 }

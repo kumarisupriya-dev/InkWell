@@ -90,14 +90,11 @@ function updateJournal(state) {
     } else {
         state.inventory.forEach(item => {
             const chip = document.createElement('div');
-            chip.className = 'badge';
-            chip.style.padding = '0.35rem 0.75rem';
-            chip.style.fontSize = '0.85rem';
-            chip.style.backgroundColor = 'var(--bg-parchment-subtle)';
-            chip.style.color = 'var(--text-ink)';
-            chip.style.border = '1px solid var(--border-parchment)';
-            chip.title = item.description;
-            chip.textContent = item.name;
+            chip.className = 'inventory-card';
+            chip.innerHTML = `
+            <span class="inventory-card-title">${item.name}</span>
+            <span class="inventory-card-desc">${item.description}</span>
+          `;
             inventoryListEl.appendChild(chip);
         });
     }
