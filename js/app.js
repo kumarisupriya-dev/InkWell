@@ -113,11 +113,18 @@ function updateJournal(state) {
 }
 function openJournal() {
     journalDrawerEl.classList.add('open');
-    journalDrawerEl.setAttribute('aria-hidden', 'false');
+    journalDrawerEl.removeAttribute('aria-hidden');
+    journalDrawerEl.removeAttribute('inert');
+    journalCloseBtn.focus();
 }
 function closeJournal() {
+    if (document.activeElement && journalDrawerEl.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+    journalToggleBtn.focus();
     journalDrawerEl.classList.remove('open');
     journalDrawerEl.setAttribute('aria-hidden', 'true');
+    journalDrawerEl.setAttribute('inert', '');
 }
 journalToggleBtn.addEventListener('click', openJournal);
 journalCloseBtn.addEventListener('click', closeJournal);
