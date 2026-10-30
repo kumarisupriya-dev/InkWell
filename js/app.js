@@ -1,5 +1,8 @@
 import {StoryEngine} from "./engine.js";
+import {sound} from "./audio.js";
 
+let isTyping = false;
+let skipTypewriter = false;
 const engine = new StoryEngine();
 const sceneChapterEl = document.getElementById('scene-chapter');
 const sceneTitleEl = document.getElementById('scene-title');
@@ -19,20 +22,47 @@ const restartBtn = document.getElementById('restart-btn');
 const themeToggleBtn = document.getElementById('theme-toggle-btn');
 const audioToggleBtn = document.getElementById('audio-toggle-btn');
 const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
-function renderScene(scene, state) {
+async function renderScene(scene, state) {
     if (!scene) return;
+    sound.playDistantThunder();
     sceneChapterEl.textContent = scene.chapter || 'Chapter';
     sceneTitleEl.textContent = scene.title || 'Untitled';
+    choicesContainerEl.style.opacity = '0';
+    choicesContainerEl.style.pointerEvents = 'none';
     storyContentEl.innerHTML = '';
-    scene.text.forEach((paragraphText, index) => {
+    isTyping = true;
+    skipTypewriter = false;
+    for (let i = 0; i < scene.text.length; i++) {
         const p = document.createElement('p');
         p.className = 'story-paragraph';
-        if (index === 0) {
-            p.classList.add('drop-cap');
-        }
-        p.innerHTML = paragraphText;
+        if (i === 0) p.classList.add('drop-cap');
         storyContentEl.appendChild(p);
-    });
+        const fullText = scene.text[i];
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = fullText;
+        const rawText = tempDiv.textContent || tempDiv.innerText || '';
+        if (skipTypewriter) {
+            p.innerHTML = fullText;
+            continue;
+        }
+        let charIndex = 0;
+        await new Promise(resolve => {
+            const interval = setInterval(() => {
+                if (skipTypewriter || charIndex >= rawText.length) {
+                    clearInterval(interval);
+                    p.innerHTML = fullText;
+                    resolve();
+                    return;
+                }
+                p.textContent += rawText[charIndex];
+                if (charIndex % 6 === 0) {
+                    sound.playQuillScratch();
+                }
+                charIndex++;
+            }, 18);
+        });
+    }
+    isTyping = false;
     if (scene.item) {
         itemBannerEl.classList.remove('hidden');
         itemBannerTextEl.textContent = `Discovered: ${scene.item.name} — ${scene.item.description}`;
@@ -55,13 +85,15 @@ function renderScene(scene, state) {
                 <span class="choice-text">
                 <em>[Locked]</em> ${choice.text}
                 <small class="lock-hint">(Requires missing item)</small>
-            </span>`;
+            </span>
+         `;
             } else {
                 button.innerHTML = `
                 <span class="choice-bullet">${bullet}</span>
                 <span class="choice-text">${choice.text}</span>
-              `;
+            `;
                 button.addEventListener('click', () => {
+                    sound.playDistantThunder();
                     engine.makeChoice(index);
                     window.scrollTo({top: 0, behavior: 'smooth'});
                 });
@@ -69,6 +101,9 @@ function renderScene(scene, state) {
             choicesContainerEl.appendChild(button);
         });
     }
+    choicesContainerEl.style.transition = 'opacity 0.4s ease';
+    choicesContainerEl.style.opacity = '1';
+    choicesContainerEl.style.pointerEvents = 'auto';
     updateJournal(state);
 }
 function updateJournal(state) {
@@ -152,9 +187,36 @@ themeToggleBtn.addEventListener('click', () => {
     setTheme(isDark ? 'light' : 'dark');
 });
 setTheme(savedTheme);
-audioToggleBtn.addEventListener('click', () => {
-    alert('Rain & quill sound synthesis will be initialized in Phase 4!');
+document.querySelector('.parchment-sheet')?.addEventListener('click', () => {
+    if (isTyping) {
+        skipTypewriter = true;
+    }
 });
+function updateAudioButtonUI() {
+    const audioIcon = document.getElementById('audio-icon');
+    if (!audioIcon) return;
+    if (sound.isMuted) {
+        audioIcon.innerHTML = `
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+     `;
+    } else {
+        audioIcon.innerHTML = `
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M15.54 8.46a 5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+     `;
+    }
+}
+audioToggleBtn.addEventListener('click', () => {
+    sound.toggleMute();
+    updateAudioButtonUI();
+    if (!sound.isMuted) {
+        sound.playWaxStamp();
+    }
+});
+updateAudioButtonUI();
 engine.onStateChange((scene, state) => {
     renderScene(scene, state);
 });
