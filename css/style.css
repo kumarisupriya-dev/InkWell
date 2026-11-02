@@ -486,3 +486,30 @@ body {
         font-size: 1.02rem;
     }
 }
+[data-theme="dark"] .reading-desk {
+    background: radial-gradient(ellipse 900px 600px at 50% 100px, rgba(214, 166, 84, 0.08) 0%, transparent 85%), var(--bg-desk);
+}
+[data-theme="dark"] .parchment-sheet {
+    box-shadow: 0 0 40px rgba(214, 166, 84, 0.05), var(--shadow-parchment);
+}
+[data-theme="dark"] #theme-toggle-btn {
+    border-color: rgba(214, 166, 84, 0.5);
+    background: rgba(214, 166, 84, 0.14);
+    color: #F8EAD0;
+}
+[data-theme="dark"] #theme-icon {
+    stroke: var(--accent-gold);
+    filter: drop-shadow(0 0 6px rgba(214, 166, 84, 0.8));
+}
+[data-theme="dark"] .choice-card.choice-locked {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+[data-theme="dark"] .inventory-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-parchment);
+}
+[data-theme="dark"] .inventory-card:hover {
+    border-color: var(--accent-gold);
+    background-color: rgba(255, 255, 255, 0.06);
+}

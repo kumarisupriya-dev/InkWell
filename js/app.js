@@ -181,13 +181,16 @@ const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
 function setTheme(theme) {
     if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggleBtn.setAttribute('title', 'Switch to Daylight Reading Theme');
     } else {
         document.documentElement.removeAttribute('data-theme');
+        themeToggleBtn.setAttribute('title', 'Switch to Candlelight Midnight Study');
     }
     localStorage.setItem(THEME_KEY, theme);
 }
 themeToggleBtn.addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    sound.playWaxStamp();
     setTheme(isDark ? 'light' : 'dark');
 });
 setTheme(savedTheme);
