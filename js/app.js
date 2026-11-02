@@ -1,5 +1,6 @@
 import {StoryEngine} from "./engine.js";
 import {sound} from "./audio.js";
+import {storage} from "./storage.js";
 
 let isTyping = false;
 let skipTypewriter = false;
@@ -162,12 +163,15 @@ journalToggleBtn.addEventListener('click', openJournal);
 journalCloseBtn.addEventListener('click', closeJournal);
 journalBackdropEl.addEventListener('click', closeJournal);
 rewindBtn.addEventListener('click', () => {
+    sound.playWaxStamp();
     if (engine.rewind()) {
         closeJournal();
     }
 });
 restartBtn.addEventListener('click', () => {
-    if (confirm('Are you sure you want to restart your investigation from the gates?')) {
+    if (confirm('Are you sure you want to restart  your investigation from the gates?')) {
+        sound.playWaxStamp();
+        storage.clearBookmark();
         engine.restart();
         closeJournal();
     }
@@ -218,12 +222,20 @@ audioToggleBtn.addEventListener('click', () => {
 });
 updateAudioButtonUI();
 engine.onStateChange((scene, state) => {
+    storage.saveBookmark(state);
     renderScene(scene, state);
 });
 async function init() {
     try {
         await engine.loadStory();
-        renderScene(engine.getCurrentScene(), engine.state);
+        const savedBookmark = storage.hasBookmark();
+        if (savedBookmark && storage.hasBookmark()) {
+            engine.restoreState(savedBookmark);
+            itemBannerEl.classList.remove('hidden');
+            itemBannerTextEl.textContent = 'Resumed investigation from your bookmark.';
+        } else {
+            renderScene(engine.getCurrentScene(), engine.state);
+        }
     } catch (error) {
         storyContentEl.innerHTML = `
         <p class="story-paragraph" style="color: var(--accent-crimson);">

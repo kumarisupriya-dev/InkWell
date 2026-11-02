@@ -33,7 +33,7 @@ export class StoryEngine {
         return this.storyData.scenes[this.state.currentNodeId] || null;
     }
     canChoose(choice) {
-        if (!choice.requireItem) {
+        if (!choice.requiresItem) {
             return true;
         }
         return this.hasItem(choice.requiresItem);
@@ -87,6 +87,15 @@ export class StoryEngine {
         this.state.clues = [];
         this.state.history = [];
         this.processCurrentSceneDiscoveries();
+        this.notifyStateChange();
+    }
+    restoreState(savedState) {
+        if (!savedState) return;
+        this.state.currentNodeId = savedState.currentNodeId || 'prologue';
+        this.state.inventory = savedState.inventory || [];
+        this.state.clues = savedState.clues || [];
+        this.state.history = savedState.history || [];
+        this.state.endingsUnlocked = savedState.endingsUnlocked || [];
         this.notifyStateChange();
     }
     onStateChange(callback) {
