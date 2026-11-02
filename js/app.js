@@ -134,6 +134,25 @@ function updateJournal(state) {
             inventoryListEl.appendChild(chip);
         });
     }
+    const endingsListEl = document.getElementById('endings-list');
+    if (endingsListEl) {
+        endingsListEl.innerHTML = '';
+        if (!state.endingsUnlocked || state.endingsUnlocked.length === 0) {
+            endingsListEl.innerHTML = '<span class="empty-entry">No case endings documented yet.</span>';
+        } else {
+            state.endingsUnlocked.forEach(ending => {
+                const badge = document.createElement('div');
+                badge.className = 'badge';
+                badge.style.padding = '0.35rem 0.75rem';
+                badge.style.fontSize = '0.82rem';
+                badge.style.background = 'var(--bg-parchment-subtle)';
+                badge.style.color = 'var(--accent-crimson)';
+                badge.style.border = '1px solid var(--accent-crimson)';
+                badge.textContent = `${ending}`;
+                endingsListEl.appendChild(badge);
+            });
+        }
+    }
     if (state.history.length === 0) {
         rewindBtn.disabled = true;
         rewindBtn.style.opacity = '0.5';
