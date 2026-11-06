@@ -58,75 +58,90 @@ body {
     width: 100%;
 }
 .desk-header {
-    background: rgba(26, 22, 19, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-leather);
-    padding: 0.85rem 2rem;
+    background: #1C1814;
+    border-bottom: 2px solid #5C4A33;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 -1px 0 #8C6D3F;
+    padding: 0.9rem 2.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 20;
-    color: #E8DFD0;
 }
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    color: #E8DFD0;
+    gap: 0.75rem;
+    padding: 0.35rem 0.85rem;
+    background: #25201A;
+    border: 1px solid #5C4A33;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-.brand .icon-pull {
-    stroke: var(--accent-gold);
+.brand .icon-quill {
+    stroke: #D6A654;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
 }
 .brand-title {
     font-family: var(--font-serif-title);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
+    color: #F0E6D2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 .desk-controls {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.75rem;
 }
 .desk-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 6px;
+    background: #25201A;
+    border: 1px solid #5C4A33;
+    border-radius: 3px;
     color: #D6C8B5;
-    font-family: var(--font-sans-ui);
-    font-size: 0.85rem;
+    font-family: var(--font-serif-prose);
+    font-size: 0.88rem;
     font-weight: 500;
-    padding: 0.45rem 0.85rem;
+    padding: 0.5rem 0.95rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.5rem;
     cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 5px rgba(0, 0, 0, 0.35);
     transition: all 0.2s ease;
 }
 .desk-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    border-color: rgba(255, 255, 255, 0.25);
+    background: #2F2821;
+    border-color: #8C6D3F;
+    color: #F8EAD0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.45);
+    transform: translateY(-1px);
+}
+.desk-btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .desk-btn-accent {
-    background: rgba(140, 45, 45, 0.25);
-    border-color: rgba(140, 45, 45, 0.5);
-    color: #F5C6C6;
+    background: #361F1F;
+    border-color: #6E2D2D;
+    color: #F5D3D3;
 }
 .desk-btn-accent:hover {
-    background: rgba(140, 45, 45, 0.25);
-    border-color: var(--accent-crimson);
+    background: #4A2626;
+    border-color: #A83B3B;
+    color: #FFFFFF;
 }
 .badge {
     background-color: var(--accent-crimson);
     color: #FFFFFF;
-    font-size: 0.75rem;
+    font-family: var(--font-sans-ui);
+    font-size: 0.72rem;
     font-weight: 700;
-    padding: 0.1rem 0.45rem;
+    padding: 0.15rem 0.45rem;
     border-radius: 10px;
-    margin-left: 0.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .parchment-wrapper {
     flex: 1;
